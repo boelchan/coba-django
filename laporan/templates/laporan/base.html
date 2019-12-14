@@ -1,0 +1,28 @@
+<!-- laporan/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>{% block title %} - Lapor Pemerintah {% endblock %}</title>
+</head>
+<body>
+
+    {% if user.is_authenticated %}
+        Hi {{ user.username }}! <a href="{% url 'logout' %}">logout</a>
+        <p><a href="{% url 'laporan:laporan_tambah' %}">Tambah</a></p>
+    {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">login</a>
+    {% endif %}
+    
+    
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

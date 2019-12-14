@@ -1,0 +1,6 @@
+.venv
+.vscode
+.idea
+db.sqlite3
+.env
+__pychace__

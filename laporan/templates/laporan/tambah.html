@@ -1,0 +1,42 @@
+{% extends "laporan/base.html" %}
+{% load class_filters %}
+
+{% block content %}
+    <!-- <form action="{% url 'laporan:laporan_tambah'  %}" 
+          method="post">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <input type="submit" value="Submit">
+    </form> -->
+
+    <form action="{% url 'laporan:laporan_tambah'  %}" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="fieldWrapper">
+            {{ form.timestamp.errors }}
+            <label for="{{ form.judul.id_for_label }}">Waktu:</label>
+            {{ form.timestamp }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.judul.errors }}
+            <label for="{{ form.judul.id_for_label }}">Judul:</label>
+            {{ form.judul|addclass:'judul-tegar'}}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.deskripsi.errors }}
+            <label for="{{ form.deskripsi.id_for_label }}">Deskripsi:</label>
+            {{ form.deskripsi }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.daerah.errors }}
+            <label for="{{ form.daerah.id_for_label }}">daerah</label>
+            {{ form.daerah }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.kategori.errors }}
+            <label for="{{ form.kategori.id_for_label }}">Kategori</label>
+            {{ form.kategori }}
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
